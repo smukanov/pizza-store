@@ -1,0 +1,24 @@
+.SettingBar{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 6px;
+    padding: 6px;
+    background-color: #f3f3f3;
+    height: 85px;
+}
+
+.SettingBar__row{
+    display: flex;
+}
+
+.SettingBar__type{
+    flex: 1 0 50%;
+}
+
+.SettingBar__size{
+    flex: 1 0 33.33%;
+}
+
+.SettingBar__type_active, .SettingBar__size_active{
+    background-color: #ffffff;
+}

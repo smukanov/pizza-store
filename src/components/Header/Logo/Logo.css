@@ -1,0 +1,25 @@
+.Logo{
+    display: flex;
+    align-items: center;
+}
+
+.Logo__img{
+    width: 100%;
+}
+
+.Logo__text{
+    padding-left: 17px;
+}
+
+.Logo__title{
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29.23px;
+}
+
+.Logo__subtitle{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19.49px;
+    opacity: 0.6;
+}

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button{
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+}
+
+li{
+    list-style: none;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17.05px;
+    color: #2c2c2b;
+}
+
+.container{
+    max-width: 1225px;
+    margin: 0 auto;
+    padding-left: 67px;
+    padding-right: 48px;
+}

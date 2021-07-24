@@ -1,0 +1,31 @@
+.ShopBasket{
+    display: flex;
+
+    padding: 15px 19px 16px 23px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19.49px;
+
+    color: #ffffff;
+    border-radius: 30px;
+    background-color: #FE5F1E;
+}
+
+.ShopBasket__price {
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+    padding-right: 13px;
+    margin-right: 13px;
+}
+
+.ShopBasket__price span:first-child{
+    margin-right: 9px;
+}
+
+.ShopBasket__quantity{
+    display: flex;
+}
+
+.ShopBasket__img{
+    margin-right: 9px;
+}

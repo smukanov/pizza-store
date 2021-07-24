@@ -1,0 +1,27 @@
+.Filter__inner{
+    display: flex;
+}
+
+.Filter__item{
+    font-size: 16px;
+    line-height: 19.49px;
+    border-radius: 25px;
+    padding: 14px 30px 17px 30px;
+    margin-right: 7px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.Filter__item:hover{
+    background-color: gray;
+    transition: 0.5s;
+}
+
+.Filter__item:last-child{
+    margin: 0;
+}
+
+.Filter__item_active{
+    background-color: #282828;
+    color: #ffffff;
+}

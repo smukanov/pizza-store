@@ -1,0 +1,30 @@
+.AddButton{
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    color: #EB5A1E;
+    border: 1px solid;
+    border-radius: 27px;
+    cursor: pointer;
+}
+
+.AddButton:hover{
+    color: #ffffff;
+    background-color: #EB5A1E;
+    transition: 0.5s;
+}
+
+.AddButton__child{
+    margin-right: 8px;
+}
+
+.AddButton__child:last-child{
+    margin: 0;
+}
+
+.AddButton__count{
+    padding: 3px 7px;
+    color: #ffffff;
+    background-color: #EB5A1E;
+    border-radius: 50%;
+}

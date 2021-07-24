@@ -1,0 +1,8 @@
+.Header{
+    padding: 25px 0 25px 10px;
+}
+
+.Header__inner{
+    display: flex;
+    justify-content: space-between;
+}

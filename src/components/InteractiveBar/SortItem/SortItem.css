@@ -1,0 +1,14 @@
+.SortItem__wrapper{
+    position: relative;
+}
+
+.SortItem__label{
+    margin-left: 7px;
+}
+
+.SortItem__type{
+    color: #FE5F1E;
+    border-bottom: 1px #FE5F1E dotted;
+    margin-left: 9px;
+    cursor: pointer;
+}
