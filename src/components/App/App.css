@@ -10,6 +10,15 @@ button{
     cursor: pointer;
 }
 
+.btn_active{
+    background-color: #ffffff;
+}
+
+.btn_disabled{
+    pointer-events: none;
+    opacity: 0.4;
+}
+
 li{
     list-style: none;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import './FilterValue.css';
 
-const FilterValue = () => {
+const FilterValue = ({title}) => {
     return (
         <div className="FilterValue">
-            Все пиццы
+            <span>{title} </span>
+            <span>пиццы</span>
         </div>
     )
 }

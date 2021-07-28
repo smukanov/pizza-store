@@ -1,21 +1,40 @@
 import React from 'react';
 import './List.css';
 import ListItem from '../ListItem/ListItem';
+import EmptyItem from '../App/EmptyItem/EmptyItem';
+import { connect } from 'react-redux';
+import { map } from 'bluebird';
 
-const List = () => {
+const List = ({items}) => {
+    const elems = items.map(item => {
+        return (
+            <ListItem key = {item.id} {...item}/>
+        )
+    })
+    
+    if (elems.length === 0){
+        return (
+            <EmptyItem/>
+        )
+    }
     return (
         <div className="List">
-            <ListItem name = "Чизбургер пицца" price = "395"/>
-            <ListItem name = "Сырная" price = "450"/>
-            <ListItem name = "Креветки по азиатски" price = "290"/>
-            <ListItem name = "Сырный цыпленок" price = "385"/>
-
-            <ListItem name = "Чизбургер пицца" price = "395"/>
-            <ListItem name = "Сырная" price = "450"/>
-            <ListItem name = "Креветки по азиатски" price = "290"/>
-            <ListItem name = "Сырный цыпленок" price = "385"/>
+            {elems}
         </div>
     )
 }
 
-export default List;
+const mapStateToProps = (state) => {
+    return {
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    debugger;
+    return {
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);

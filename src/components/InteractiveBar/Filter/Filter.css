@@ -24,4 +24,5 @@
 .Filter__item_active{
     background-color: #282828;
     color: #ffffff;
+    pointer-events: none;
 }
