@@ -3,9 +3,19 @@ import './List.css';
 import ListItem from '../ListItem/ListItem';
 import EmptyItem from '../App/EmptyItem/EmptyItem';
 import { connect } from 'react-redux';
-import { map } from 'bluebird';
+import { useEffect } from 'react';
+import { setItems } from '../../redux/actions/itemsAction';
 
-const List = ({items}) => {
+const List = ({items, setPizzas}) => {
+
+    const loadData = () => {
+        fetch("http://localhost:3000/db.json")
+            .then((res) => res.json())
+            .then((res) => setPizzas(res.pizzas))
+    };
+
+    useEffect(loadData, []);
+
     const elems = items.map(item => {
         return (
             <ListItem key = {item.id} {...item}/>
@@ -26,14 +36,13 @@ const List = ({items}) => {
 
 const mapStateToProps = (state) => {
     return {
-
+        items: state.items.items,
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
-    debugger;
     return {
-
+        setPizzas: (pizzas) => dispatch(setItems(pizzas)),
     }
 }
 

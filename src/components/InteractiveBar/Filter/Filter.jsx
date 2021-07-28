@@ -1,23 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { setCategory } from '../../../redux/actions/filterAction';
 import './Filter.css';
 
-const Filter = ({data, onSetActive, onChangeCategory}) => {
+const Filter = ({categories, activeCategory, changeCategory}) => {
 
-    const changeFilter = (id, name) => {
-        onSetActive(id);
-        onChangeCategory(name);
-    }
+    const elements = categories.map(({id, name, label}) => {
 
-    const elements = data.map(({id, name, isActive}) => {
-        const active = isActive ? "Filter__item_active" : null;
+        const active = name === activeCategory ? "Filter__item_active" : null;
+        
         return (
             <div className={`Filter__item ${active}`} 
                 key = {id}
-                onClick = {() => changeFilter(id, name)}>
-                {name}
+                onClick = {() => changeCategory(name)}>
+                {label}
             </div>
         )
     })
+
     return (
         <div className = "Filter">
             <div className="Filter__inner">
@@ -27,4 +27,17 @@ const Filter = ({data, onSetActive, onChangeCategory}) => {
     )
 }
 
-export default Filter;
+const mapStateToProps = (state) => {
+    return {
+        categories: state.categories.categories,
+        activeCategory: state.filter.selectedCategory,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeCategory: (name) => dispatch(setCategory(name)),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
