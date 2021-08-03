@@ -2,46 +2,37 @@ import React from 'react';
 import { useEffect } from 'react';
 import './Submenu.css';
 
-const Submenu = ({filterValue, changeFilterValue, setOpen}) => {
-    
-    const submenuItems = [
-        {name: "by__popularity", label: "по популярности"},
-        {name: "by__price", label: "по цене"},
-        {name: "by__alphabyte", label: "по алфавиту"},        
-    ]
-
-    const onClickedItem = (label) => {
-        changeFilterValue(label);
-        setOpen(false);
-    }
+const Submenu = ({setOpen, items, filterValue, changeSort}) => {
 
     const handleEvent = (e) => {
         if (e.target.className === "SortItem__type" || e.target.className.includes("Submenu__list-item")){
             return;
         }
         setOpen(false);
-        console.log(e.target.className);
     }
 
-    useEffect(() => {
+    useEffect(() => { // при клике по другой области закрываем окно
         document.body.addEventListener('click', handleEvent);
         return () => {
             document.body.removeEventListener('click', handleEvent);
-            console.log('remove');
         }
     }, [])
 
-    const elements = submenuItems.map(({name, label}) => {
-        const active = filterValue === name ? "Submenu__list-item_active" : null;
-        debugger;
+    const elements = items.map(({id, name, type}) => {
+        const active = filterValue.type === type ? "Submenu__list-item_active" : null;
         return (
            <li className = {`Submenu__list-item ${active}`}
-                key = {name}
-                onClick = {() => onClickedItem(label)}>
-               {label}
+                key = {id}
+                onClick = {() => {
+                    changeSort({type, name});
+                    setOpen(false)}}>
+
+                        {name}
+
            </li>
         )
     })
+    
     return (
         <div className="Submenu">
             <ul className="Submenu__list">

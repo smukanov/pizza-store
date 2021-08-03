@@ -4,6 +4,9 @@ import ShopBasket from './ShopBasket/ShopBasket';
 import './Header.css';
 
 const Header = () => {
+    
+    console.log("Header");
+
     return (
         <div className = "Header">
 

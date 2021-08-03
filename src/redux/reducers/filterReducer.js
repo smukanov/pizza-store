@@ -1,6 +1,12 @@
 const initialState = {
-    selectedCategory: "all",
-    selectedSortedBy: "popularity",
+    selectedCategory: {
+        type: 100,
+        name: "Все",
+    },
+    selectedSortedBy: {
+        type: "popularity",
+        name: "по популярности",
+    },
 }
 
 const filterReducer = (state = initialState, action) => {

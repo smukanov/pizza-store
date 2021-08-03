@@ -1,19 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCategory } from '../../../redux/actions/filterAction';
 import './Filter.css';
 
-const Filter = ({categories, activeCategory, changeCategory}) => {
+const Filter = () => {
 
-    const elements = categories.map(({id, name, label}) => {
+    const dispatch = useDispatch();
 
-        const active = name === activeCategory ? "Filter__item_active" : null;
+    const {categories, activeCategory} = useSelector(({categories, filter}) => {
+        return {
+            categories: categories.categories,
+            activeCategory: filter.selectedCategory,
+        }
+    })
+
+    const elements = categories.map(({id, name, type}) => {
+
+        const active = type === activeCategory.type ? "Filter__item_active" : null;
         
         return (
             <div className={`Filter__item ${active}`} 
                 key = {id}
-                onClick = {() => changeCategory(name)}>
-                {label}
+                onClick = {() => {dispatch(setCategory({
+                    type,
+                    name,
+                }))}}>
+                {name}
             </div>
         )
     })
@@ -27,17 +39,4 @@ const Filter = ({categories, activeCategory, changeCategory}) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        categories: state.categories.categories,
-        activeCategory: state.filter.selectedCategory,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeCategory: (name) => dispatch(setCategory(name)),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+export default Filter;

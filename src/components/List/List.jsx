@@ -2,31 +2,37 @@ import React from 'react';
 import './List.css';
 import ListItem from '../ListItem/ListItem';
 import EmptyItem from '../App/EmptyItem/EmptyItem';
-import { connect } from 'react-redux';
-import { useEffect } from 'react';
-import { setItems } from '../../redux/actions/itemsAction';
+import { useSelector } from 'react-redux';
+import sortingByType from '../../service/service';
 
-const List = ({items, setPizzas}) => {
+const List = () => {
+    const {items, selectedCategory, sortType} = useSelector(({items, filter}) => {
+        return {
+            items: items.items,
+            selectedCategory: filter.selectedCategory,
+            sortType: filter.selectedSortedBy,
+        }
+    })
 
-    const loadData = () => {
-        fetch("http://localhost:3000/db.json")
-            .then((res) => res.json())
-            .then((res) => setPizzas(res.pizzas))
-    };
+    const filteredItems = items.filter(item => { // находим пиццы по заданной категории
+        if (selectedCategory.type === 100){
+            return item;
+        }
+        return item.category === selectedCategory.type;
+    })
 
-    useEffect(loadData, []);
+    sortingByType(sortType.type, filteredItems);
 
-    const elems = items.map(item => {
+    const elems = filteredItems.map(item => { // трансформируем элементы в jsx
         return (
             <ListItem key = {item.id} {...item}/>
         )
     })
-    
-    if (elems.length === 0){
-        return (
-            <EmptyItem/>
-        )
+
+    if(elems.length === 0){ // если по заданной категории не найдено пицц, возвращаем "не найдено"
+        return <EmptyItem/>
     }
+
     return (
         <div className="List">
             {elems}
@@ -34,16 +40,4 @@ const List = ({items, setPizzas}) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        items: state.items.items,
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setPizzas: (pizzas) => dispatch(setItems(pizzas)),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default List;

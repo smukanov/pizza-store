@@ -4,7 +4,7 @@ import './Price.css';
 const Price = ({price}) => {
     return (
         <div className = "Price">
-            от <span>{price}</span> <span>P</span>
+            <span>{price}</span> <span>Тг</span>
         </div>
     )
 }
