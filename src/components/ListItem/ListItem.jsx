@@ -9,7 +9,7 @@ import { addOrder } from '../../redux/actions/orderAction';
 
 
 
-const ListItem = ({name, imageUrl, types, sizes, price, category, rating}) => {
+const ListItem = ({id, name, imageUrl, types, sizes, price}) => {
 
     const dispatch = useDispatch();
     
@@ -54,6 +54,7 @@ const ListItem = ({name, imageUrl, types, sizes, price, category, rating}) => {
 
     const addItemToOrder = (name, pizzaType, sizeType) => { // добавить пиццы в заказ
         dispatch(addOrder({
+            id,
             name,
             pizzaType,
             sizeType,
@@ -85,6 +86,7 @@ const ListItem = ({name, imageUrl, types, sizes, price, category, rating}) => {
 
                 <AddButton 
                     addItemToOrder = {addItemToOrder}
+                    id = {id}
                     name = {name}
                     pizzaType = {selectedType}
                     sizeType = {selectedSize}/>

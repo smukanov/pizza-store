@@ -5,7 +5,8 @@ import {
 } from '../index';
 import { useDispatch } from 'react-redux';
 import { setItems } from '../../redux/actions/itemsAction';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import ShopPage from '../ShopPage/ShopPage';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -19,21 +20,21 @@ const App = () => {
     useEffect(loadData, []);
 
     return (
-        <div>
-            <div className="container">
-                <Header/>
-                <Route path = "/">
-                    <InteractiveBar/>
-                    <FilterValue/>
-                    <List/>
-                </Route>
-                <Route path = "shop">
-                    <div>
-                        Корзина
-                    </div>
-                </Route>
-            </div>
+        <BrowserRouter>
+            <div className = "App">
+                <div className="container">
+                    <Header/>
+                        <Route path = "/" exact>
+                            <InteractiveBar/>
+                            <FilterValue/>
+                            <List/>
+                        </Route>
+                        <Route path = "/shop" exact>
+                            <ShopPage/>
+                        </Route>
+                </div>
         </div>
+        </BrowserRouter>
     )
 }
 

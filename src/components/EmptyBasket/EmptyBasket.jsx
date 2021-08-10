@@ -2,6 +2,7 @@ import React from 'react';
 import './EmptyBasket.css';
 import smile from './images/smile-img.svg';
 import img from './images/shop-cart.png';
+import { Link } from 'react-router-dom';
 
 const EmptyBasket = () => {
     return (
@@ -19,7 +20,9 @@ const EmptyBasket = () => {
             </div>
             <img className = "EmptyBasket__img" src={img} alt="" />
             <div className="EmptyBasket__btn-wrapper">
-                <button className = "EmptyBasket__btn">Вернуться назад</button>
+                <Link to = "/">
+                    <button className = "EmptyBasket__btn">Вернуться назад</button>
+                </Link>
             </div>
         </div>
         </div>

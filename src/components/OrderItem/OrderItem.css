@@ -1,0 +1,39 @@
+.OrderItem{
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    background-color: hotpink;
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 700px;
+}
+
+.OrderItem:last-child{
+    margin-bottom: 0;
+}
+
+.OrderItem__info{
+    display: flex;
+}
+
+.OrderItem__info-name{
+    flex: 0 0 200px;
+}
+
+.OrderItem__info-count{
+    flex: 0 0 140px;
+}
+
+.OrderItem__info-sum{
+    flex: 0 0 200px;
+}
+
+.OrderItem__btn-delete{
+    font-size: 25px;
+}
+
+.OrderItem__btn-delete:hover{
+    color: yellow;
+}

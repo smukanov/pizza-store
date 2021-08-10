@@ -2,6 +2,7 @@ import React from 'react';
 import './ShopBasket.css';
 import img from './images/shop-basket.svg';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const ShopBasket = () => {
 
@@ -18,6 +19,7 @@ const ShopBasket = () => {
     const count = orderItems.length;
 
     return (
+        <Link to = "/shop">
         <div className = "ShopBasket">
                 <div className="ShopBasket__price">
                     <span>{sum}</span>
@@ -28,6 +30,7 @@ const ShopBasket = () => {
                     <span>{count}</span>
                 </div>
             </div>
+        </Link>
     )
 }
 
